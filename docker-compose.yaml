@@ -1,0 +1,9 @@
+services:
+  database:
+    image: mysql:5.7.31
+    ports: [3306]
+    environment:
+      MYSQL_ROOT_PASSWORD: pswd
+      MYSQL_DATABASE: recipe
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: pswd
