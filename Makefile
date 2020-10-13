@@ -6,3 +6,6 @@ start:
 stop:
 	symfony server:stop
 	docker-compose stop
+
+fixtures:
+	symfony console hautelook:fixtures:load --no-bundles

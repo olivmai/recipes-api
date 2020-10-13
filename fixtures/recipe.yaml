@@ -1,0 +1,3 @@
+App\Entity\Recipe:
+  recipe_1:
+    name: test-fixtures
