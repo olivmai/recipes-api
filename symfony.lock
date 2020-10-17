@@ -19,6 +19,12 @@
     "composer/package-versions-deprecated": {
         "version": "1.11.99"
     },
+    "composer/semver": {
+        "version": "1.7.1"
+    },
+    "composer/xdebug-handler": {
+        "version": "1.4.3"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -104,6 +110,18 @@
     "fig/link-util": {
         "version": "1.1.1"
     },
+    "friendsofphp/php-cs-fixer": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.2",
+            "ref": "cc05ab6abf6894bddb9bbd6a252459010ebe040b"
+        },
+        "files": [
+            ".php_cs.dist"
+        ]
+    },
     "fzaninotto/faker": {
         "version": "v1.9.1"
     },
@@ -167,6 +185,9 @@
     "php": {
         "version": "7.4"
     },
+    "php-cs-fixer/diff": {
+        "version": "v1.3.1"
+    },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
     },
@@ -175,6 +196,18 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "1.4.0"
+    },
+    "phpstan/phpstan": {
+        "version": "0.12.49"
+    },
+    "phpstan/phpstan-doctrine": {
+        "version": "0.12.21"
+    },
+    "phpstan/phpstan-phpunit": {
+        "version": "0.12.16"
+    },
+    "phpstan/phpstan-symfony": {
+        "version": "0.12.8"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -202,6 +235,18 @@
     },
     "sebastian/recursion-context": {
         "version": "4.0.3"
+    },
+    "squizlabs/php_codesniffer": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "0dc9cceda799fd3a08b96987e176a261028a3709"
+        },
+        "files": [
+            "phpcs.xml.dist"
+        ]
     },
     "symfony/asset": {
         "version": "v5.1.7"
@@ -316,6 +361,9 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
+    "symfony/options-resolver": {
+        "version": "v5.1.7"
+    },
     "symfony/orm-pack": {
         "version": "v2.0.0"
     },
@@ -348,6 +396,9 @@
     },
     "symfony/polyfill-php80": {
         "version": "v1.18.1"
+    },
+    "symfony/process": {
+        "version": "v5.1.7"
     },
     "symfony/property-access": {
         "version": "v5.1.7"
