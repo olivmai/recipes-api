@@ -8,7 +8,12 @@ make start
 ```
 If everything is ok, Symfony app will open in your default browser.
 
-## Play tests suite
+## Run quality tools
+### Tests suite
 ```bash
 make test
+```
+### Linter and fixer (Phpstan & php-cs)
+```bash
+make lint
 ```
