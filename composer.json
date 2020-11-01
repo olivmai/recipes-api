@@ -37,6 +37,7 @@
     },
     "require-dev": {
         "hautelook/alice-bundle": "^2.8",
+        "justinrainbow/json-schema": "^5.2",
         "symfony/phpunit-bridge": "^5.1"
     },
     "config": {
