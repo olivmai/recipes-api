@@ -3,6 +3,7 @@
 namespace App\Tests\Api;
 
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
+use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\Client;
 use App\Entity\Recipe;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
@@ -16,11 +17,46 @@ class RecipesTest extends ApiTestCase
     use RefreshDatabaseTrait;
 
     /**
+     * @param string $username
+     * @param string $password
+     * @throws ClientExceptionInterface
+     * @throws DecodingExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws TransportExceptionInterface
+     */
+    private function createAuthenticatedClient(Client $client, string $username, string $password): void
+    {
+        $body = json_encode([
+            'email' => $username,
+            'password' => $password,
+        ]);
+
+        $response = $client->request('POST', '/authentication_token', [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+            'body' => $body,
+        ]);
+
+        $data = $response->toArray();
+        $client->setDefaultOptions([
+            'auth_bearer' => $data['token'],
+        ]);
+    }
+
+    /**
+     * @throws ClientExceptionInterface
+     * @throws DecodingExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws ServerExceptionInterface
      * @throws TransportExceptionInterface
      */
     public function testGetCollection(): void
     {
-        static::createClient()->request('GET', '/api/recipes');
+        $client = static::createClient();
+        $this->createAuthenticatedClient($client, 'api', 'api');
+        $client->request('GET', '/api/recipes');
 
         $this->assertResponseIsSuccessful();
         $this->assertResponseHeaderSame('content-type', 'application/ld+json; charset=utf-8');
@@ -36,7 +72,9 @@ class RecipesTest extends ApiTestCase
      */
     public function testCreateRecipe(): void
     {
-        $response = static::createClient()->request('POST', '/api/recipes', ['json' => [
+        $client = static::createClient();
+        $this->createAuthenticatedClient($client, 'api', 'api');
+        $response = $client->request('POST', '/api/recipes', ['json' => [
             'name' => 'Recipe from testing',
         ]]);
 
@@ -59,6 +97,7 @@ class RecipesTest extends ApiTestCase
     public function testUpdateBook(): void
     {
         $client = static::createClient();
+        $this->createAuthenticatedClient($client, 'api', 'api');
         $iri = $this->findIriBy(Recipe::class, ['name' => 'test-fixtures']);
 
         $client->request('PUT', $iri, ['json' => [
@@ -72,18 +111,23 @@ class RecipesTest extends ApiTestCase
     }
 
     /**
+     * @throws ClientExceptionInterface
+     * @throws DecodingExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws ServerExceptionInterface
      * @throws TransportExceptionInterface
      */
     public function testDeleteBook(): void
     {
         $client = static::createClient();
-        $iri = $this->findIriBy(Recipe::class, ['name' => 'test-fixtures']);
+        $this->createAuthenticatedClient($client, 'api', 'api');
+        $iri = $this->findIriBy(Recipe::class, ['name' => 'updated name']);
 
         $client->request('DELETE', $iri);
 
         $this->assertResponseStatusCodeSame(204);
         $this->assertNull(
-            static::$container->get('doctrine')->getRepository(Recipe::class)->findOneBy(['name' => 'test-fixtures'])
+            static::$container->get('doctrine')->getRepository(Recipe::class)->findOneBy(['name' => 'updated name'])
         );
     }
 }
