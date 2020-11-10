@@ -17,27 +17,27 @@ class Ingredient
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $quantity;
+    private ?int $quantity;
 
     /**
      * @ORM\Column(type="string", length=5)
      */
-    private $unity;
+    private ?string $unity;
 
     /**
      * @ORM\ManyToOne(targetEntity=Recipe::class, inversedBy="ingredients")
      */
-    private $recipe;
+    private ?Recipe $recipe;
 
     public function getId(): ?int
     {

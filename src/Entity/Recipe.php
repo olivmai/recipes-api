@@ -20,18 +20,18 @@ class Recipe
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Ingredient::class, mappedBy="recipe", cascade={"remove"})
      * @ApiSubresource()
      */
-    private $ingredients;
+    private ArrayCollection $ingredients;
 
     public function __construct()
     {
