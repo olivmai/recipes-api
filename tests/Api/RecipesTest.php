@@ -17,8 +17,6 @@ class RecipesTest extends ApiTestCase
     use RefreshDatabaseTrait;
 
     /**
-     * @param string $username
-     * @param string $password
      * @throws ClientExceptionInterface
      * @throws DecodingExceptionInterface
      * @throws RedirectionExceptionInterface
