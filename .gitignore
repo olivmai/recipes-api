@@ -30,5 +30,6 @@
 ###< friendsofphp/php-cs-fixer ###
 
 ###> lexik/jwt-authentication-bundle ###
-/config/jwt/*.pem
+/config/jwt/private.pem
+/config/jwt/public.pem
 ###< lexik/jwt-authentication-bundle ###
