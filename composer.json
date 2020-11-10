@@ -1,6 +1,6 @@
 {
     "type": "project",
-    "name": "recipe api",
+    "name": "olivmai/recipe-api",
     "description": "api to serve recipes resources",
     "license": "proprietary",
     "require": {
