@@ -1,6 +1,6 @@
 {
     "type": "project",
-    "name": "recipe-api",
+    "name": "recipe api",
     "description": "api to serve recipes resources",
     "license": "proprietary",
     "require": {
