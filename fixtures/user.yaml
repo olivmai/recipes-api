@@ -1,0 +1,5 @@
+App\Entity\User:
+  user_1:
+    email: api
+    # password is "api" argon2i encoded
+    password: \$argon2i\$v=19\$m=16,t=2,p=1\$NzVmODZYdmVlM2tjMzNKbw\$hckb9br63JbVeFwqmcFv0w
