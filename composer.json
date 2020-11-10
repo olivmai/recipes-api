@@ -1,5 +1,7 @@
 {
     "type": "project",
+    "name": "recipe-api",
+    "description": "api to serve recipes resources",
     "license": "proprietary",
     "require": {
         "php": ">=7.2.5",
