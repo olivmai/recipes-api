@@ -28,7 +28,7 @@ test: ## start test suite
 	php bin/phpunit --stop-on-failure
 
 lint: ## phpstan linter
-	php -d memory_limit=4G vendor/bin/phpstan analyse src
+	php -d memory_limit=4G vendor/bin/phpstan analyse -l 8 src
 
 cs: ## code style inspecter and fixer
 	php vendor/bin/php-cs-fixer fix
