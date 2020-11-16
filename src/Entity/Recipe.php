@@ -8,6 +8,7 @@ use App\Repository\RecipeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\PersistentCollection;
 
 /**
  * @ApiResource()
@@ -31,7 +32,7 @@ class Recipe
      * @ORM\OneToMany(targetEntity=Ingredient::class, mappedBy="recipe", cascade={"remove"})
      * @ApiSubresource()
      */
-    private ArrayCollection $ingredients;
+    private Collection $ingredients;
 
     public function __construct()
     {
